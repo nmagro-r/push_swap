@@ -2,29 +2,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_is_sign.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 13:11:28 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/13 13:11:32 by nmagro-r         ###   ########.fr       */
+/*   Created: 2025/03/13 12:57:03 by nmagro-r          #+#    #+#             */
+/*   Updated: 2025/03/13 12:57:04 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+int	ft_is_sing(char c)
 {
-	t_list	*temp;
-
-	if (!lst || !del)
-		return ;
-	while (*lst != NULL)
+	if (c == '-' || c == '+' || c == '*' || c == '/' || c == '%')
 	{
-		temp = (*lst)->next;
-		del((*lst)->content);
-		free(*lst);
-		*lst = temp;
+		return (1);
 	}
+	return (0);
 }

@@ -1,30 +1,31 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   rrb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 13:11:28 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/13 13:11:32 by nmagro-r         ###   ########.fr       */
+/*   Created: 2025/03/13 15:32:36 by nmagro-r          #+#    #+#             */
+/*   Updated: 2025/03/13 15:32:38 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "pushswap.h"
 
-#include "libft.h"
-
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	rrb(t_list **b, int flag)
 {
+	t_list	*move_node;
 	t_list	*temp;
 
-	if (!lst || !del)
+	if (*b == NULL || (*b)->next == NULL)
 		return ;
-	while (*lst != NULL)
-	{
-		temp = (*lst)->next;
-		del((*lst)->content);
-		free(*lst);
-		*lst = temp;
-	}
+	move_node = *b;
+	while (move_node->next->next != NULL)
+		move_node = move_node->next;
+	temp = move_node->next;
+	move_node->next = NULL;
+	temp->next = *b;
+	*b = temp;
+	if (flag == 1)
+		ft_putstr_fd("rrb\n", 1);
 }

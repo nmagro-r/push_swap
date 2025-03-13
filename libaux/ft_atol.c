@@ -2,29 +2,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 13:11:28 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/13 13:11:32 by nmagro-r         ###   ########.fr       */
+/*   Created: 2025/03/13 12:56:53 by nmagro-r          #+#    #+#             */
+/*   Updated: 2025/03/13 12:56:58 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+int	ft_atol(const char *nptr)
 {
-	t_list	*temp;
+	long	sign;
+	long	result;
 
-	if (!lst || !del)
-		return ;
-	while (*lst != NULL)
+	while (*nptr == ' ' || *nptr == '\t' || *nptr == '\n' || *nptr == '\v'
+		|| *nptr == '\f' || *nptr == '\r')
+		nptr++;
+	sign = 1;
+	if (*nptr == '-')
 	{
-		temp = (*lst)->next;
-		del((*lst)->content);
-		free(*lst);
-		*lst = temp;
+		sign = -1;
+		nptr++;
 	}
+	else if (*nptr == '+')
+		nptr++;
+	result = 0;
+	while (*nptr >= '0' && *nptr <= '9')
+	{
+		result = result * 10 + (*nptr - '0');
+		nptr++;
+	}
+	return (sign * result);
 }

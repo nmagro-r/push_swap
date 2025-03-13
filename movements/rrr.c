@@ -1,30 +1,23 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   rrr.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 13:11:28 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/13 13:11:32 by nmagro-r         ###   ########.fr       */
+/*   Created: 2025/03/13 15:33:06 by nmagro-r          #+#    #+#             */
+/*   Updated: 2025/03/13 15:48:28 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "pushswap.h"
 
-#include "libft.h"
-
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	rrr(t_list **a, t_list **b)
 {
-	t_list	*temp;
-
-	if (!lst || !del)
+	if (*b == NULL || (*b)->next == NULL)
 		return ;
-	while (*lst != NULL)
-	{
-		temp = (*lst)->next;
-		del((*lst)->content);
-		free(*lst);
-		*lst = temp;
-	}
+	if (*a == NULL || (*a)->next == NULL)
+		return ;
+	rra(a, 1);
+	rrb(b, 1);
 }
