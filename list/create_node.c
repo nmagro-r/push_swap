@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ss.c                                               :+:      :+:    :+:   */
+/*   create_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 15:35:00 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/19 13:01:34 by nmagro-r         ###   ########.fr       */
+/*   Created: 2025/03/19 21:25:47 by nmagro-r          #+#    #+#             */
+/*   Updated: 2025/03/19 21:37:24 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
-
-void	ss(t_list **a, t_list **b)
+t_list  *create_node(int num)
 {
-	if (*b == NULL || (*b)->next == NULL)
-		return ;
-	if (*a == NULL || (*a)->next == NULL)
-		return ;
-	sa(a, 1);
-	sb(b, 1);
+    t_list *node;
+
+    node = ft_calloc(1, sizeof(t_list));
+    
+    if(node == NULL)
+        return(NULL);
+    node->content = num;
+    node->next = NULL;
+    return(node);
 }

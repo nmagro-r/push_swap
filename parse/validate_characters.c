@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ss.c                                               :+:      :+:    :+:   */
+/*   validate_characters.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 15:35:00 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/19 13:01:34 by nmagro-r         ###   ########.fr       */
+/*   Created: 2025/03/17 18:41:38 by nmagro-r          #+#    #+#             */
+/*   Updated: 2025/03/19 12:58:57 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "../push_swap.h"
 
-void	ss(t_list **a, t_list **b)
+int	validate_characters(char *num)
 {
-	if (*b == NULL || (*b)->next == NULL)
-		return ;
-	if (*a == NULL || (*a)->next == NULL)
-		return ;
-	sa(a, 1);
-	sb(b, 1);
+	int	i;
+
+	i = 0;
+	if (ft_is_sing(num[0]) || ft_isdigit(num[0]))
+	{
+		if (ft_is_sing(num[0]) && num[1] == '\0')
+			return (0);
+		if (ft_is_sing(num[0]))
+			i++;
+		while (ft_isdigit(num[i]))
+		{
+			if (num[i + 1] == '\0')
+				return (1);
+			i++;
+		}
+	}
+	return (0);
 }

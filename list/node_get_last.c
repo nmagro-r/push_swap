@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ss.c                                               :+:      :+:    :+:   */
+/*   node_get_last.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 15:35:00 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/19 13:01:34 by nmagro-r         ###   ########.fr       */
+/*   Created: 2025/03/20 15:24:05 by nmagro-r          #+#    #+#             */
+/*   Updated: 2025/03/20 15:32:34 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
-
-void	ss(t_list **a, t_list **b)
+t_list  *node_get_last(t_list *first_node)
 {
-	if (*b == NULL || (*b)->next == NULL)
-		return ;
-	if (*a == NULL || (*a)->next == NULL)
-		return ;
-	sa(a, 1);
-	sb(b, 1);
+    t_list  *node;
+    
+    if(first_node == NULL)
+        return NULL;
+
+    node = first_node;
+
+    while(node->next != NULL)
+        node = node->next;
+    return(node); 
 }

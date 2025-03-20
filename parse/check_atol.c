@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ss.c                                               :+:      :+:    :+:   */
+/*   check_atol.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 15:35:00 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/19 13:01:34 by nmagro-r         ###   ########.fr       */
+/*   Created: 2025/03/17 12:57:53 by nmagro-r          #+#    #+#             */
+/*   Updated: 2025/03/19 13:04:25 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "../push_swap.h"
 
-void	ss(t_list **a, t_list **b)
+int	check_atol(char *numbers)
 {
-	if (*b == NULL || (*b)->next == NULL)
-		return ;
-	if (*a == NULL || (*a)->next == NULL)
-		return ;
-	sa(a, 1);
-	sb(b, 1);
+	long	num;
+
+	if (check_long_number(numbers) == 0)
+		return (0);
+	num = ft_atol(numbers);
+	if (num > 2147483647 || num < -2147483648)
+		return (0);
+	return (1);
 }

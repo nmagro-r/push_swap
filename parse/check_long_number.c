@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ss.c                                               :+:      :+:    :+:   */
+/*   check_long_number.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 15:35:00 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/19 13:01:34 by nmagro-r         ###   ########.fr       */
+/*   Created: 2025/03/17 12:42:38 by nmagro-r          #+#    #+#             */
+/*   Updated: 2025/03/18 16:02:16 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "../push_swap.h"
 
-void	ss(t_list **a, t_list **b)
+int	check_long_number(char *numbers)
 {
-	if (*b == NULL || (*b)->next == NULL)
-		return ;
-	if (*a == NULL || (*a)->next == NULL)
-		return ;
-	sa(a, 1);
-	sb(b, 1);
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (numbers[i] == '+' || numbers[i] == '-')
+		i++;
+	while (numbers[i] && count <= 11)
+	{
+		i++;
+		count++;
+	}
+	if (count >= 11)
+		return (0);
+	return (1);
 }
