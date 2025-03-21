@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pb.c                                               :+:      :+:    :+:   */
+/*   utils_push.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 15:29:43 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/13 15:29:50 by nmagro-r         ###   ########.fr       */
+/*   Created: 2025/03/21 15:06:15 by nmagro-r          #+#    #+#             */
+/*   Updated: 2025/03/21 15:07:12 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include"push_swap.h"
+
+void	pa(t_list **a, t_list **b, int flag)
+{
+	t_list	*temp;
+
+	if (*b == NULL)
+		return ;
+	temp = *b;
+	*b = (*b)->next;
+	temp->next = *a;
+	*a = temp;
+	if (flag == 1)
+		ft_putstr_fd("pa\n", 1);
+}
 
 void	pb(t_list **a, t_list **b, int flag)
 {

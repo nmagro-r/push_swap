@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_characters.c                              :+:      :+:    :+:   */
+/*   utils_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 18:41:38 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/19 12:58:57 by nmagro-r         ###   ########.fr       */
+/*   Created: 2025/03/21 15:18:03 by nmagro-r          #+#    #+#             */
+/*   Updated: 2025/03/21 15:19:10 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 int	validate_characters(char *num)
 {
@@ -31,4 +31,33 @@ int	validate_characters(char *num)
 		}
 	}
 	return (0);
+}
+int	check_long_number(char *numbers)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (numbers[i] == '+' || numbers[i] == '-')
+		i++;
+	while (numbers[i] && count <= 11)
+	{
+		i++;
+		count++;
+	}
+	if (count >= 11)
+		return (0);
+	return (1);
+}
+int	check_atol(char *numbers)
+{
+	long	num;
+
+	if (check_long_number(numbers) == 0)
+		return (0);
+	num = ft_atol(numbers);
+	if (num > 2147483647 || num < -2147483648)
+		return (0);
+	return (1);
 }

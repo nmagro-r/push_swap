@@ -1,32 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_long_number.c                                :+:      :+:    :+:   */
+/*   count_argv.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 12:42:38 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/18 16:02:16 by nmagro-r         ###   ########.fr       */
+/*   Created: 2025/03/21 14:35:56 by nmagro-r          #+#    #+#             */
+/*   Updated: 2025/03/21 14:53:06 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "pushswap.h"
 
-int	check_long_number(char *numbers)
+int	count_argv(t_list *stack)
 {
-	int	i;
 	int	count;
 
-	i = 0;
 	count = 0;
-	while (numbers[i] == '+' || numbers[i] == '-')
-		i++;
-	while (numbers[i] && count <= 11)
+	while (stack)
 	{
-		i++;
 		count++;
+		stack = stack->next;
 	}
-	if (count >= 11)
-		return (0);
-	return (1);
+	return (count);
+}
+
+void	put_index(t_list **stack_a)
+{
+	t_list *temp;
+	t_list *current;
+	int	index;
+
+	temp = *stack_a;
+	while (temp != NULL)
+	{
+		index = 0;
+		current = *stack_a;
+		while (current != NULL)
+		{
+			if (temp->content > current->content)
+				index++;
+			current = current->next;
+		}
+		temp->index = index;
+		temp = temp->next;
+	}
 }
