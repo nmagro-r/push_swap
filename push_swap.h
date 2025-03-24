@@ -6,7 +6,7 @@
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 16:42:26 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/19 21:22:50 by nmagro-r         ###   ########.fr       */
+/*   Updated: 2025/03/21 15:39:38 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,16 @@ void	sa(t_list **a, int flag);
 void	sb(t_list **b, int flag);
 void	ss(t_list **a, t_list **b);
 
+
 /*Parsing*/
 int		validate_characters(char *num);
 int		check_long_number(char *numbers);
 int		check_atol(char *numbers);
+t_list  *create_node(int num);
+t_list  *get_biggest_node(t_list *stack);
+int	stack_length(t_list *stack);
+t_list  *get_smallest_node(t_list *stack);
+void    node_add_end(t_list **stack, t_list *node);
+void    node_add_front(t_list **stack, t_list *node);
+t_list  *node_get_last(t_list *first_node);
 #endif

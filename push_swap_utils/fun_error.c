@@ -1,25 +1,22 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
+/*   fun_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 13:11:49 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/13 13:11:55 by nmagro-r         ###   ########.fr       */
+/*   Created: 2025/03/23 14:14:09 by nmagro-r          #+#    #+#             */
+/*   Updated: 2025/03/23 14:14:46 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	fun_error(t_list **stack)
 {
-	if (!lst || !f)
-		return ;
-	while (lst != NULL)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
+	if (stack != NULL)
+		free_lst(stack);
+
+	ft_putstr_fd("Error\n", 2);
+	exit(1);
 }

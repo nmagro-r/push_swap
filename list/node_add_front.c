@@ -6,9 +6,11 @@
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:08:02 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/20 12:45:39 by nmagro-r         ###   ########.fr       */
+/*   Updated: 2025/03/21 18:31:32 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../push_swap.h"
 
 void    node_add_front(t_list **stack, t_list *node)
 {

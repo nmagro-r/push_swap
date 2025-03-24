@@ -1,30 +1,26 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   free_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 13:11:28 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/13 13:11:32 by nmagro-r         ###   ########.fr       */
+/*   Created: 2025/03/23 14:11:54 by nmagro-r          #+#    #+#             */
+/*   Updated: 2025/03/23 14:12:27 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
-#include "libft.h"
-
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	free_lst(t_list **lst)
 {
 	t_list	*temp;
 
-	if (!lst || !del)
-		return ;
-	while (*lst != NULL)
+	while (*lst)
 	{
-		temp = (*lst)->next;
-		del((*lst)->content);
-		free(*lst);
-		*lst = temp;
+		temp = *lst;
+		*lst = (*lst)->next;
+		free(temp);
 	}
+	*lst = NULL;
 }

@@ -6,9 +6,11 @@
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 15:24:05 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/20 15:32:34 by nmagro-r         ###   ########.fr       */
+/*   Updated: 2025/03/21 18:31:35 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../push_swap.h"
 
 t_list  *node_get_last(t_list *first_node)
 {

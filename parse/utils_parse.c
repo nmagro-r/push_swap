@@ -6,7 +6,7 @@
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:18:03 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/21 15:19:10 by nmagro-r         ###   ########.fr       */
+/*   Updated: 2025/03/23 14:22:50 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,22 @@ int	check_atol(char *numbers)
 	if (num > 2147483647 || num < -2147483648)
 		return (0);
 	return (1);
+}
+void	check_dup(t_list **stack_a)
+{
+	t_list	*current;
+	t_list	*temp;
+
+	current = *stack_a;
+	while (current != NULL)
+	{
+		temp = current->next;
+		while (temp != NULL)
+		{
+			if (current->content == temp->content)
+				fun_error(stack_a);
+			temp = temp->next;
+		}
+		current = current->next;
+	}
 }

@@ -1,39 +1,35 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   put_index.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 13:12:14 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/13 13:12:15 by nmagro-r         ###   ########.fr       */
+/*   Created: 2025/03/23 13:24:01 by nmagro-r          #+#    #+#             */
+/*   Updated: 2025/03/23 14:03:27 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	put_index(t_list **stack_a)
 {
-	t_list	*newlst;
-	t_list	*first;
-	void	*temp;
+	t_list *temp;
+	t_list *current;
+	int	index;
 
-	first = NULL;
-	if (!lst || !f || !del)
-		return (NULL);
-	while (lst != NULL)
+	temp = *stack_a;
+	while (temp != NULL)
 	{
-		temp = f(lst->content);
-		newlst = ft_lstnew(temp);
-		if (newlst == NULL)
+		index = 0;
+		current = *stack_a;
+		while (current != NULL)
 		{
-			del(temp);
-			ft_lstclear(&first, del);
-			return (NULL);
+			if (temp->content > current->content)
+				index++;
+			current = current->next;
 		}
-		ft_lstadd_back(&first, newlst);
-		lst = lst->next;
+		temp->index = index;
+		temp = temp->next;
 	}
-	return (first);
 }

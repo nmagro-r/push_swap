@@ -6,11 +6,11 @@
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:08:57 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/21 15:09:25 by nmagro-r         ###   ########.fr       */
+/*   Updated: 2025/03/21 15:42:23 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "push_swap.h"
 
 void	rra(t_list **a, int flag)
 {
