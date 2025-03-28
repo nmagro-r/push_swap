@@ -6,7 +6,7 @@
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 14:14:09 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/23 14:14:46 by nmagro-r         ###   ########.fr       */
+/*   Updated: 2025/03/28 15:17:37 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	fun_error(t_list **stack)
 {
 	if (stack != NULL)
 		free_lst(stack);
-
 	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }

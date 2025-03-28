@@ -6,7 +6,7 @@
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:18:03 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/23 14:22:50 by nmagro-r         ###   ########.fr       */
+/*   Updated: 2025/03/28 15:08:24 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	validate_characters(char *num)
 	}
 	return (0);
 }
+
 int	check_long_number(char *numbers)
 {
 	int	i;
@@ -50,6 +51,7 @@ int	check_long_number(char *numbers)
 		return (0);
 	return (1);
 }
+
 int	check_atol(char *numbers)
 {
 	long	num;
@@ -61,6 +63,17 @@ int	check_atol(char *numbers)
 		return (0);
 	return (1);
 }
+
+void	check_parse(char *arg, t_list **stack_a)
+{
+	if (!check_atol(arg))
+		fun_error(stack_a);
+	if (!check_long_number(arg))
+		fun_error(stack_a);
+	if (!validate_characters(arg))
+		fun_error(stack_a);
+}
+
 void	check_dup(t_list **stack_a)
 {
 	t_list	*current;

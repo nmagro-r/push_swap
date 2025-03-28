@@ -6,7 +6,7 @@
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:08:57 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/21 15:42:23 by nmagro-r         ###   ########.fr       */
+/*   Updated: 2025/03/28 15:06:37 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	rra(t_list **a, int flag)
 	if (flag == 1)
 		ft_putstr_fd("rra\n", 1);
 }
+
 void	rrb(t_list **b, int flag)
 {
 	t_list	*move_node;

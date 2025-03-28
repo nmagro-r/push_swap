@@ -6,11 +6,11 @@
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 15:06:15 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/21 15:36:15 by nmagro-r         ###   ########.fr       */
+/*   Updated: 2025/03/28 15:05:53 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "push_swap.h"
 
 void	pa(t_list **a, t_list **b, int flag)
 {
