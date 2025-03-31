@@ -6,79 +6,85 @@
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:02:25 by nmagro-r          #+#    #+#             */
-/*   Updated: 2024/10/10 18:08:05 by nmagro-r         ###   ########.fr       */
+/*   Updated: 2025/03/31 13:41:47 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*copy_words(const char *s, int *i, char c)
+static char	**ft_free(char **result, size_t fail_pos)
 {
-	char	*words;
-	int		fin;
+	size_t		i;
 
-	while (s[*i] == c)
-		(*i)++;
-	fin = *i;
-	while (s[fin] != '\0' && s[fin] != c)
-		fin++;
-	words = ft_substr(s, *i, (fin - *i));
-	*i = fin;
-	return (words);
+	if (fail_pos > 0)
+	{
+		i = fail_pos - 1;
+		while (i > 0)
+		{
+			free (result[i--]);
+		}
+		free(result[0]);
+	}
+	free(result);
+	return (NULL);
 }
 
-static int	count_words(const char *str, char delim)
+static size_t	count_words(const char *s, char c)
 {
-	int	count;
-	int	i;
+	size_t	count;
 
 	count = 0;
-	i = 0;
-	while (str[i] != '\0')
+	while (*s)
 	{
-		if ((str[i] != delim) && (str[i + 1] == delim || str[i + 1] == '\0'))
+		while (*s == c && *s)
+			s++;
+		if (*s && *s != c)
 		{
 			count++;
+			while (*s && *s != c)
+				s++;
 		}
-		i++;
 	}
 	return (count);
 }
 
-static void	ft_free(char **ret, int j)
+static char	*get_next_word(const char *s, char c)
 {
-	while (j >= 0)
-	{
-		free(ret[j]);
-		j--;
-	}
-	free(ret);
+	size_t	len;
+
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	return (ft_substr(s, 0, len));
 }
 
-char	**ft_split(const char *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char	**ret;
-	int		count;
-	int		j;
-	int		i;
+	size_t	i;
+	size_t	words;
+	char	**result;
 
-	j = 0;
-	i = 0;
-	count = count_words(s, c);
-	ret = ft_calloc(count + 1, sizeof(char *));
-	if (ret == NULL)
+	if (!s)
 		return (NULL);
-	while (j < count)
+	i = 0;
+	words = count_words(s, c);
+	result = malloc((words + 1) * sizeof(char *));
+	if (!result)
+		return (NULL);
+	while (*s && i < words)
 	{
-		ret[j] = copy_words(s, &i, c);
-		if (ret[j] == NULL)
+		while (*s == c && *s)
+			s++;
+		if (*s)
 		{
-			ft_free(ret, j);
-			return (NULL);
+			result[i++] = get_next_word(s, c);
+			if (!result [i - 1])
+				return (ft_free(result, i - 1));
 		}
-		j++;
+		while (*s && *s != c)
+			s++;
 	}
-	return (ret);
+	return (result[i] = NULL, result);
 }
 /*int	main (void)
 {

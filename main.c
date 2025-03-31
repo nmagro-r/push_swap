@@ -6,7 +6,7 @@
 /*   By: nmagro-r <nmagro-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 18:15:49 by nmagro-r          #+#    #+#             */
-/*   Updated: 2025/03/28 14:57:27 by nmagro-r         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:39:50 by nmagro-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,23 @@ void	push_swap(t_list **stack_a, t_list **stack_b)
 	else if (len == 5)
 		five_node(stack_a, stack_b);
 	else
+	{
 		ksort(stack_a, stack_b, len);
+	}
 	free_lst(stack_a);
+}
+
+static void	ft_free_matrix(char **matrix)
+{
+	int	i;
+
+	i = 0;
+	while (matrix[i])
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
 }
 
 int	main(int argc, char **argv)
@@ -43,8 +58,17 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	i = 1;
-	(void)argc;
-	insert_stack(&stack_a, argv);
-	put_index(&stack_a);
+	if (argc < 2)
+		return (0);
+	while (argv[i] != NULL)
+	{
+		nums = ft_split(argv[i], ' ');
+		insert_stack(&stack_a, nums);
+		ft_free_matrix(nums);
+		i++;
+	}
+	check_sorted_list(&stack_a);
 	push_swap(&stack_a, &stack_b);
+	free_lst(&stack_a);
+	return (0);
 }
