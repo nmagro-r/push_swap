@@ -5,7 +5,6 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -I. -I./libaux -I./printf -g3
 LIBAUX_DIR = libaux
 #PRINTF_DIR = ./printf
-LIBS = -L $(LIBAUX_DIR) -L$(PRINTF_DIR) -lftprintf
 SRCS =	main.c\
 		list/create_node.c\
 		list/get_biggest_node.c\
@@ -36,9 +35,9 @@ all: $(NAME)
 $(NAME): $(OBJS)
 #	make -s -C $(PRINTF_DIR)
 	make -s -C $(LIBAUX_DIR)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS) libaux/libaux.a
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) libaux/libaux.a
 
-%.o: %.c pushswap.h
+%.o: %.c push_swap.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

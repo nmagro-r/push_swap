@@ -26,5 +26,5 @@ void	check_sorted_list(t_list **stack_a)
 		node = node->next;
 	}
 	free_lst(stack_a);
-	exit(1);
+	exit(0);
 }

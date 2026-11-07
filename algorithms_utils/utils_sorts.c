@@ -46,16 +46,24 @@ void	four_node(t_list **stack_a, t_list **stack_b)
 
 void	five_node(t_list **stack_a, t_list **stack_b)
 {
-	while ((*stack_a)->index < 3)
-		ra(stack_a, 1);
-	while ((*stack_a)->index >= 3)
-		pb(stack_a, stack_b, 1);
+	int	pushed;
+
+	pushed = 0;
+	while (pushed < 2)
+	{
+		if ((*stack_a)->index >= 3)
+		{
+			pb(stack_a, stack_b, 1);
+			pushed++;
+		}
+		else
+			ra(stack_a, 1);
+	}
 	three_node(stack_a);
-	pa(stack_a, stack_b, 1);
-	if ((*stack_a)->index == 3)
-		ra(stack_a, 1);
+	if ((*stack_b)->index == 4)
+		sb(stack_b, 1);
 	pa(stack_a, stack_b, 1);
 	ra(stack_a, 1);
-	if ((*stack_a)->index >= 3)
-		ra(stack_a, 1);
+	pa(stack_a, stack_b, 1);
+	ra(stack_a, 1);
 }
